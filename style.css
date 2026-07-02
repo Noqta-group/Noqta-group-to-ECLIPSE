@@ -33,7 +33,7 @@ body::before {
     background-image: url('https://ik.imagekit.io/aqdurahgv/background.png');
     background-size: cover;
     background-position: center;
-    opacity: 0.15; /* "Yadob bayna" - perfectly subtle background texture */
+    opacity: 0.15;
     z-index: -1;
     pointer-events: none;
 }
@@ -57,13 +57,21 @@ body::before {
     font-weight: 400;
 }
 
-/* --- Updated Hero Logo Image --- */
+/* --- Structural Sections --- */
+.hero-logo-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+/* Updated Logo with Breathing Animation */
 .hero-logo-img {
     max-width: 60%;
     max-height: 60vh;
     object-fit: contain;
-    /* This adds a smooth fade-in/fade-out breathing effect to replace the looping video */
-    animation: breathe 4s ease-in-out infinite alternate; 
+    animation: breathe 4s ease-in-out infinite alternate;
 }
 
 @keyframes breathe {
@@ -109,7 +117,7 @@ body::before {
 .contain-media {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Prevents cropping completely */
+    object-fit: contain;
     display: block;
 }
 
@@ -198,7 +206,33 @@ body::before {
     display: block;
 }
 
-/* --- Responsive Layout for Mobile/Tablets --- */
+/* --- Floating Audio Button --- */
+.audio-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+}
+
+.audio-btn:hover {
+    background: rgba(212, 175, 55, 0.4);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* --- Responsive Layout --- */
 @media (max-width: 1024px) {
     .container, .alternate-layout .container {
         flex-direction: column;
@@ -231,35 +265,7 @@ body::before {
     .media-wrapper {
         height: 50vh;
     }
-}
 
-/* --- Floating Audio Button --- */
-.audio-btn {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    background: rgba(212, 175, 55, 0.15);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1000;
-    backdrop-filter: blur(8px);
-    transition: all 0.3s ease;
-    font-size: 1.5rem;
-}
-
-.audio-btn:hover {
-    background: rgba(212, 175, 55, 0.4);
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-}
-
-@media (max-width: 1024px) {
     .audio-btn {
         bottom: 20px;
         right: 20px;
